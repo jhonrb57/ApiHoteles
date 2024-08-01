@@ -1,11 +1,7 @@
-﻿using ApiHoteles.Models;
+﻿using Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ApiHoteles.Context
+namespace BaseDatos
 {
     public class AppDbContext : DbContext
     {

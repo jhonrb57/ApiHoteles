@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Models;
+using System;
+using BaseDatos;
+using DataObjects;
 using System.Linq;
-using System.Threading.Tasks;
-using ApiHoteles.Context;
-using ApiHoteles.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,7 +32,7 @@ namespace ApiHoteles.Controllers
 
                 if (hoteles.Count > 0)
                 {
-                    hoteles = OrdenamientoAscending(hoteles);
+                    hoteles = HotelDataObject.OrdenamientoAscending(hoteles);
                 }
 
                 return Ok(hoteles);
@@ -56,7 +55,7 @@ namespace ApiHoteles.Controllers
 
                 if(hoteles.Count > 0)
                 {
-                    hoteles = OrdenamientoDescending(hoteles);
+                    hoteles = HotelDataObject.OrdenamientoDescending(hoteles);
                 }
 
                 return Ok(hoteles);
@@ -131,24 +130,6 @@ namespace ApiHoteles.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        }
-
-        private List<Hotel> OrdenamientoDescending(List<Hotel> hoteles)
-        {
-            List<Hotel> listaOrdenada = new List<Hotel>();
-
-            listaOrdenada = hoteles.OrderByDescending(p => p.Precio).ToList();
-
-            return listaOrdenada;
-        }
-
-        private List<Hotel> OrdenamientoAscending(List<Hotel> hoteles)
-        {
-            List<Hotel> listaOrdenada = new List<Hotel>();
-
-            listaOrdenada = hoteles.OrderBy(p => p.Precio).ToList();
-
-            return listaOrdenada;
         }
     }
 }
