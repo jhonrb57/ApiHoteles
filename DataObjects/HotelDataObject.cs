@@ -6,7 +6,7 @@ namespace DataObjects
 {
     public class HotelDataObject
     {
-        public static List<Hotel> OrdenamientoDescending(List<Hotel> hoteles)
+        public List<Hotel> OrdenamientoDescending(List<Hotel> hoteles)
         {
             List<Hotel> listaOrdenada = new List<Hotel>();
 
@@ -15,7 +15,7 @@ namespace DataObjects
             return listaOrdenada;
         }
 
-        public static List<Hotel> OrdenamientoAscending(List<Hotel> hoteles)
+        public List<Hotel> OrdenamientoAscending(List<Hotel> hoteles)
         {
             List<Hotel> listaOrdenada = new List<Hotel>();
 

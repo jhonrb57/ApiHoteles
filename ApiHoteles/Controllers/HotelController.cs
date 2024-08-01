@@ -15,6 +15,7 @@ namespace ApiHoteles.Controllers
     public class HotelController : ControllerBase
     {
         private readonly AppDbContext context;
+        private readonly HotelDataObject hotelDO = new HotelDataObject();
 
         public HotelController(AppDbContext context)
         {
@@ -32,10 +33,11 @@ namespace ApiHoteles.Controllers
 
                 if (hoteles.Count > 0)
                 {
-                    hoteles = HotelDataObject.OrdenamientoAscending(hoteles);
+                    hoteles = hotelDO.OrdenamientoAscending(hoteles);
                 }
 
                 return Ok(hoteles);
+
             }
             catch (Exception ex)
             {
@@ -55,10 +57,11 @@ namespace ApiHoteles.Controllers
 
                 if(hoteles.Count > 0)
                 {
-                    hoteles = HotelDataObject.OrdenamientoDescending(hoteles);
+                    hoteles = hotelDO.OrdenamientoDescending(hoteles);
                 }
 
                 return Ok(hoteles);
+
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -75,6 +78,7 @@ namespace ApiHoteles.Controllers
                 context.SaveChanges();
 
                 return CreatedAtRoute("GetHotel", new { id = hotel.idHotel }, hotel);
+
             }
             catch (Exception ex)
             {
